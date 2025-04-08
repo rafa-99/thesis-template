@@ -1,0 +1,144 @@
+\documentclass[12pt]{report} % Page Setup
+\usepackage{graphicx} % Image Load
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref} % References
+\usepackage[none]{hyphenat} % Remove Hyphenation
+\usepackage{parskip} % Adjust paragraph spacing for better justification
+\usepackage[a4paper, inner=3.5cm, outer=2.5cm]{geometry} % Custom margin size
+\usepackage{float} % Figures and Objects better position
+\usepackage{titlesec} % Figures and Objects better position
+\usepackage{setspace} % Text/Line Spacing
+\usepackage[utf8]{inputenc} % Encoding
+\usepackage[printonlyused]{acronym} % Acronyms List
+\usepackage{cleveref} % Better references
+\usepackage{datetime} % Date and time configuration
+% \usepackage{array} % Handle advanced table configurations
+% \usepackage{pdfpages} % Attach PDF's
+
+% Initial Chapters Configuration
+% Configure Chapter Title Format
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries} % Chapter title styling
+  {\chaptername~\thechapter}  % Adds "Chapter X"
+  {20pt}                      % Space between "Chapter X" and title
+  {\Huge}                     % Title style
+
+% Adjust Chapter Spacing
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt} % Spacing around chapter titles
+
+% Intro Pages Configuration
+\pagenumbering{roman}
+
+% Date Time Format
+\newdateformat{monthyeardate}{
+  \monthname[\THEMONTH] \THEYEAR
+}
+
+% TOC Depth
+% \setcounter{secnumdepth}{4}
+
+
+% Document Begin
+\begin{document}
+\begin{titlepage}
+    \newgeometry{margin=2.5cm}
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{images/IPSLogo.png}
+    \end{center}
+    \begin{minipage}[t]{0.4\textwidth}
+        \raggedleft
+        \LARGE
+        \textbf{Name}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.5\textwidth}
+        \LARGE
+        \textbf{Title} \\[2cm]
+        \normalsize
+        Subtitle \\[4cm]
+        Description \\[2cm]
+        \textbf{Jury} \\
+        President (Degree, Name, Institution) \\
+        Advisor (Degree, Name, Institution) \\
+        Member (Degree, Name, Institution) \\
+        Member (Degree, Name, Institution) \\[2cm]
+        \monthyeardate\today \\
+    \end{minipage}
+\end{titlepage}
+\restoregeometry
+
+\newpage
+\
+
+\newpage
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Acknowledgments}
+
+\newpage
+\chapter*{Resumo}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Resumo}
+
+\newpage
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Abstract}
+
+\newpage
+\tableofcontents
+\addcontentsline{toc}{chapter}{\protect\numberline{}Contents}
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{\protect\numberline{}List of Figures}
+
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{\protect\numberline{}List of Tables}
+
+\newpage
+\chapter*{List of Acronyms}
+\addcontentsline{toc}{chapter}{\protect\numberline{}List of Acronyms}
+\begin{acronym}
+ \acro{ACRO}{Acronym}
+\end{acronym}
+
+% Main Document Configuration
+\newpage
+\pagenumbering{arabic}
+\onehalfspacing
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\chapter{Introduction}
+\section{Motivation}
+This is a \ac{ACRO} and \acs{ACRO} example text.
+
+\newpage
+\section{Context}
+Example text is referencing bibliography\cite{refName}
+
+\newpage
+\section{Objective}
+Objective text
+
+\chapter{Example Chapter}
+\section{Example Section}
+Example text
+\subsection{Example subsection}
+Section example text
+
+\newpage
+\chapter{Third Chapter Title}
+\section{First section of Third Chapter}
+Text is referencing \Cref{fig:logo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.25]{images/IPSLogo.png}
+    \caption{IPS Logo}
+    \label{fig:logo}
+\end{figure}
+
+\newpage
+\bibliographystyle{ieeetr} % We choose the "plain" reference style
+\bibliography{bibliography} % Entries are in the refs.bib file
+\addcontentsline{toc}{chapter}{Bibliography}
+\end{document}
